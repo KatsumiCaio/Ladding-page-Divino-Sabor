@@ -30,6 +30,10 @@ html {
   animation: shimmer 6s infinite linear;
 }
 
+.animate-shimmer {
+  animation: shimmer 1.8s infinite linear;
+}
+
 /* Soft natural glow border */
 .border-gold-glow {
   box-shadow: 0 0 15px rgba(140, 94, 68, 0.2);

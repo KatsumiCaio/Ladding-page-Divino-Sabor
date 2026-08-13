@@ -1,6 +1,8 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { CLIENT_DATA } from '../data/copyData';
-import { Star, ShoppingBag, MessageCircle, MapPin, Heart, ArrowRight, ShieldCheck, Clock } from 'lucide-react';
+import { Star, ShoppingBag, MessageCircle, MapPin, ArrowRight, ShieldCheck, Clock } from 'lucide-react';
+import { ImageWithSkeleton } from './ImageWithSkeleton';
 
 interface HeroSectionProps {
   onOpenWhatsAppModal: () => void;
@@ -17,10 +19,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWhatsAppModal })
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Column - Copy & CTAs */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+            className="lg:col-span-7 space-y-6 text-center lg:text-left"
+          >
             
             {/* Google Rating Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0E6D8] border border-[#D9C5B2] shadow-xs text-xs font-semibold text-[#4A3728]">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.4 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0E6D8] border border-[#D9C5B2] shadow-xs text-xs font-semibold text-[#4A3728]"
+            >
               <span className="flex items-center gap-1 text-[#8C5E44]">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-3.5 h-3.5 fill-[#8C5E44]" />
@@ -29,7 +41,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWhatsAppModal })
               <span className="font-bold text-[#8C5E44]">5.0 no Google</span>
               <span className="text-[#8C5E44] hidden sm:inline">•</span>
               <span className="text-[#6B5E55] hidden sm:inline">Centro de Capão Bonito - SP</span>
-            </div>
+            </motion.div>
 
             {/* Main Headline */}
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#4A3728] leading-[1.15] tracking-tight">
@@ -49,25 +61,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWhatsAppModal })
             {/* CTAs */}
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               {/* Primary CTA - Cardápio Digital */}
-              <a
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 href={CLIENT_DATA.cardapioUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl text-sm font-bold bg-[#8C5E44] text-[#FDFBF7] hover:bg-[#704832] transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl text-sm font-bold bg-[#8C5E44] text-[#FDFBF7] hover:bg-[#704832] transition-all shadow-md hover:shadow-xl group"
               >
                 <ShoppingBag className="w-5 h-5 text-[#FDFBF7] group-hover:scale-110 transition-transform" />
                 <span>Ver Cardápio Digital</span>
                 <ArrowRight className="w-4 h-4 text-[#FDFBF7] group-hover:translate-x-1 transition-transform" />
-              </a>
+              </motion.a>
 
               {/* Secondary CTA - WhatsApp */}
-              <button
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 onClick={onOpenWhatsAppModal}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl text-sm font-bold bg-white border-2 border-[#8C5E44] text-[#8C5E44] hover:bg-[#FDFBF7] transition-all shadow-xs hover:shadow-md hover:-translate-y-0.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl text-sm font-bold bg-white border-2 border-[#8C5E44] text-[#8C5E44] hover:bg-[#FDFBF7] transition-all shadow-xs hover:shadow-md cursor-pointer"
               >
                 <MessageCircle className="w-5 h-5 text-[#25D366]" />
                 <span>Falar no WhatsApp / Pedir</span>
-              </button>
+              </motion.button>
             </div>
 
             {/* Trust Micro-Badges */}
@@ -86,28 +102,40 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWhatsAppModal })
               </span>
             </div>
 
-          </div>
+          </motion.div>
 
           {/* Right Column - Visual Showcase */}
-          <div className="lg:col-span-5 relative">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 1, 0.5, 1] }}
+            className="lg:col-span-5 relative"
+          >
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
               {/* Decorative Frame with Warm Earth Glow */}
               <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-[#8C5E44]/20 via-[#D9C5B2]/30 to-[#8C5E44]/10 blur-xl opacity-70" />
 
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D9C5B2] bg-white group">
-                {/* Hero Image */}
-                <img
-                  src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=1000&q=80"
-                  alt="Café cremoso com arte na espuma e sobremesa artesanal na Divino Sabor"
-                  className="w-full h-[420px] sm:h-[480px] object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                {/* Hero Image with Skeleton Loading */}
+                <div className="w-full h-[420px] sm:h-[480px]">
+                  <ImageWithSkeleton
+                    src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=1000&q=80"
+                    alt="Café cremoso com arte na espuma e sobremesa artesanal na Divino Sabor"
+                    className="group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
 
                 {/* Dark Vignette Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#4A3728]/80 via-transparent to-transparent pointer-events-none" />
 
                 {/* Floating Badge - Top Left */}
-                <div className="absolute top-4 left-4 bg-[#FDFBF7]/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-lg border border-[#D9C5B2] flex items-center gap-2">
+                <motion.div
+                  initial={{ opacity: 0, x: -15 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5, duration: 0.4 }}
+                  className="absolute top-4 left-4 bg-[#FDFBF7]/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-lg border border-[#D9C5B2] flex items-center gap-2"
+                >
                   <div className="w-8 h-8 rounded-full bg-[#F0E6D8] flex items-center justify-center text-[#8C5E44]">
                     ☕
                   </div>
@@ -115,10 +143,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWhatsAppModal })
                     <p className="text-[11px] font-bold text-[#4A3728]">Café Cremoso & Especial</p>
                     <p className="text-[10px] text-[#6B5E55]">Extraído na hora</p>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Floating Review Quote Pill - Bottom */}
-                <div className="absolute bottom-4 left-4 right-4 bg-[#FDFBF7]/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-[#D9C5B2]">
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6, duration: 0.4 }}
+                  className="absolute bottom-4 left-4 right-4 bg-[#FDFBF7]/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-[#D9C5B2]"
+                >
                   <div className="flex items-center justify-between mb-1">
                     <div className="flex items-center gap-1">
                       {[...Array(5)].map((_, i) => (
@@ -135,15 +168,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWhatsAppModal })
                   <p className="text-[10px] text-[#6B5E55] mt-1 text-right font-semibold">
                     — Cliente Divino Sabor
                   </p>
-                </div>
+                </motion.div>
 
               </div>
 
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>
     </section>
   );
 };
+

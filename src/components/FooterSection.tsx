@@ -1,9 +1,14 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { CLIENT_DATA } from '../data/copyData';
 import { BrandLogo } from './BrandLogo';
-import { Instagram, MessageCircle, ShoppingBag, MapPin, Heart, Star, ArrowUp } from 'lucide-react';
+import { Instagram, MessageCircle, ShoppingBag, Heart, Star, ArrowUp } from 'lucide-react';
 
-export const FooterSection: React.FC = () => {
+interface FooterSectionProps {
+  onOpenLegalModal?: (tab: 'terms' | 'privacy') => void;
+}
+
+export const FooterSection: React.FC<FooterSectionProps> = ({ onOpenLegalModal }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -15,7 +20,13 @@ export const FooterSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#5C4635]">
           
           {/* Brand Info */}
-          <div className="lg:col-span-5 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-5 space-y-4"
+          >
             <BrandLogo size="lg" />
             <p className="text-xs sm:text-sm text-[#F0E6D8] max-w-md leading-relaxed pt-2">
               A cafeteria e doceria artesanal mais amada no Centro de Capão Bonito - SP. Cafés especiais, bolos artesanais, salgados assados e sobremesas elaboradas com amor.
@@ -29,10 +40,16 @@ export const FooterSection: React.FC = () => {
               <span className="text-xs font-bold text-[#FDFBF7]">5.0 no Google</span>
               <span className="text-xs text-[#D9C5B2]">(+60 Avaliações Reais)</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-3 space-y-3">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-3 space-y-3"
+          >
             <h4 className="font-serif font-bold text-sm text-[#D9C5B2] uppercase tracking-wider">
               Links Rápidos
             </h4>
@@ -63,17 +80,24 @@ export const FooterSection: React.FC = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Redes Sociais & Contato */}
-          <div className="lg:col-span-4 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="lg:col-span-4 space-y-4"
+          >
             <h4 className="font-serif font-bold text-sm text-[#D9C5B2] uppercase tracking-wider">
               Conecte-se com a Gente
             </h4>
 
             <div className="space-y-2.5">
               {/* Instagram */}
-              <a
+              <motion.a
+                whileHover={{ x: 4 }}
                 href={CLIENT_DATA.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -81,10 +105,11 @@ export const FooterSection: React.FC = () => {
               >
                 <Instagram className="w-4 h-4 text-[#D9C5B2]" />
                 <span>Instagram: {CLIENT_DATA.instagramHandle}</span>
-              </a>
+              </motion.a>
 
               {/* WhatsApp */}
-              <a
+              <motion.a
+                whileHover={{ x: 4 }}
                 href={`https://wa.me/${CLIENT_DATA.whatsappRaw}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -92,10 +117,11 @@ export const FooterSection: React.FC = () => {
               >
                 <MessageCircle className="w-4 h-4 text-[#25D366]" />
                 <span>WhatsApp: {CLIENT_DATA.whatsapp}</span>
-              </a>
+              </motion.a>
 
               {/* Cardápio Digital App */}
-              <a
+              <motion.a
+                whileHover={{ x: 4 }}
                 href={CLIENT_DATA.cardapioUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -103,30 +129,51 @@ export const FooterSection: React.FC = () => {
               >
                 <ShoppingBag className="w-4 h-4 text-[#D9C5B2]" />
                 <span>Cardápio Digital: divinosabor.compraqui.app</span>
-              </a>
+              </motion.a>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
 
         {/* Bottom Bar & Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#D9C5B2]">
-          <p className="text-center sm:text-left">
-            © 2026 <strong className="text-[#FDFBF7]">Divino Sabor - Doceria & Cafeteria</strong>. R. Nove de Julho, 400 - Centro, Capão Bonito - SP.
-          </p>
+          <div className="space-y-1 text-center sm:text-left">
+            <p>
+              © 2026 <strong className="text-[#FDFBF7]">Divino Sabor - Doceria & Cafeteria</strong>. R. Nove de Julho, 400 - Centro, Capão Bonito - SP.
+            </p>
+            {onOpenLegalModal && (
+              <div className="flex items-center justify-center sm:justify-start gap-3 text-[11px] text-[#D9C5B2]/80 pt-1">
+                <button
+                  onClick={() => onOpenLegalModal('privacy')}
+                  className="hover:text-[#FDFBF7] underline underline-offset-2 transition-colors cursor-pointer"
+                >
+                  Política de Privacidade (LGPD)
+                </button>
+                <span>•</span>
+                <button
+                  onClick={() => onOpenLegalModal('terms')}
+                  className="hover:text-[#FDFBF7] underline underline-offset-2 transition-colors cursor-pointer"
+                >
+                  Termos de Uso
+                </button>
+              </div>
+            )}
+          </div>
 
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1 text-[11px]">
               Feito com <Heart className="w-3.5 h-3.5 text-[#8C5E44] fill-[#8C5E44]" /> em Capão Bonito
             </span>
-            <button
+            <motion.button
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.9 }}
               onClick={scrollToTop}
-              className="p-2 rounded-lg bg-[#5C4635] hover:bg-[#8C5E44] text-[#FAF7F2] transition-all"
+              className="p-2 rounded-lg bg-[#5C4635] hover:bg-[#8C5E44] text-[#FAF7F2] transition-all cursor-pointer"
               title="Voltar ao topo"
             >
               <ArrowUp className="w-4 h-4" />
-            </button>
+            </motion.button>
           </div>
         </div>
 
@@ -134,3 +181,4 @@ export const FooterSection: React.FC = () => {
     </footer>
   );
 };
+

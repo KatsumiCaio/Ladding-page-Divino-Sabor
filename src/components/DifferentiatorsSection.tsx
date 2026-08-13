@@ -1,5 +1,6 @@
 import React from 'react';
-import { Home, Bike, DollarSign, Heart, Sparkles, Coffee, ShieldCheck } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Home, Bike, DollarSign, Sparkles, ShieldCheck } from 'lucide-react';
 
 export const DifferentiatorsSection: React.FC = () => {
   const diffs = [
@@ -31,7 +32,13 @@ export const DifferentiatorsSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto space-y-4"
+        >
           <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-[#F0E6D8] text-[#8C5E44] uppercase tracking-wider border border-[#D9C5B2]">
             <Sparkles className="w-3.5 h-3.5" /> Diferenciais Divino Sabor
           </span>
@@ -41,15 +48,20 @@ export const DifferentiatorsSection: React.FC = () => {
           <p className="text-[#6B5E55] text-base leading-relaxed">
             Mais do que uma cafeteria e doceria, somos o ponto de encontro preferido em Capão Bonito para quem aprecia atendimento humano, ambiente aconchegante e receitas preparadas com alma.
           </p>
-        </div>
+        </motion.div>
 
         {/* 3 Grid Cards */}
         <div className="mt-14 grid md:grid-cols-3 gap-8">
           {diffs.map((diff, index) => {
             const IconComponent = diff.icon;
             return (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.5, delay: index * 0.15, ease: [0.25, 1, 0.5, 1] }}
+                whileHover={{ y: -6 }}
                 className="bg-[#FAF7F2] rounded-3xl p-8 border border-[#D9C5B2] hover:border-[#8C5E44] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative group"
               >
                 <div className="space-y-4">
@@ -75,7 +87,7 @@ export const DifferentiatorsSection: React.FC = () => {
                   <ShieldCheck className="w-4 h-4 text-[#8C5E44]" />
                   <span>Classificação 5.0 no Google</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -84,3 +96,4 @@ export const DifferentiatorsSection: React.FC = () => {
     </section>
   );
 };
+
