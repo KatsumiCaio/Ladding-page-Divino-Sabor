@@ -76,12 +76,9 @@ export const SocialProofSection: React.FC = () => {
               {/* Author Footer */}
               <div className="pt-4 border-t border-[#D9C5B2] flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <img
-                    src={review.avatar}
-                    alt={review.name}
-                    loading="lazy"
-                    className="w-10 h-10 rounded-full object-cover border border-[#8C5E44] shadow-xs"
-                  />
+                  <div className="w-10 h-10 rounded-full bg-[#8C5E44] text-[#FAF7F2] font-serif font-bold text-xs flex items-center justify-center border border-[#8C5E44]/30 shadow-xs shrink-0">
+                    {review.initials || review.name.charAt(0)}
+                  </div>
                   <div>
                     <h4 className="font-bold text-xs text-[#4A3728]">{review.name}</h4>
                     <p className="text-[11px] text-[#8C5E44] font-medium">{review.role}</p>

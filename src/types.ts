@@ -2,7 +2,8 @@ export interface Review {
   id: string;
   name: string;
   role?: string;
-  avatar: string;
+  avatar?: string;
+  initials?: string;
   rating: number;
   date: string;
   comment: string;

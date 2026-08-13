@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/Ladding-page-Divino-Sabor/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
