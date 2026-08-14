@@ -5,7 +5,7 @@ import { Star, Quote, ExternalLink } from 'lucide-react';
 
 export const SocialProofSection: React.FC = () => {
   return (
-    <section id="avaliacoes" className="py-16 sm:py-20 bg-[#FDFBF7] border-y border-[#D9C5B2]">
+    <section id="avaliacoes" className="py-12 sm:py-20 bg-[#FDFBF7] border-y border-[#D9C5B2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -14,30 +14,30 @@ export const SocialProofSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto space-y-4"
+          className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4"
         >
           
           {/* Main Google Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#4A3728] text-[#FAF7F2] text-xs sm:text-sm font-semibold shadow-xs">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#4A3728] text-[#FAF7F2] text-[11px] sm:text-sm font-semibold shadow-xs flex-wrap justify-center">
             <span className="flex text-[#8C5E44]">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-[#FDFBF7]" />
+                <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#FDFBF7]" />
               ))}
             </span>
             <span>5.0 estrelas no Google</span>
-            <span className="text-[#D9C5B2] font-normal text-xs">(+60 avaliações de clientes apaixonados)</span>
+            <span className="text-[#D9C5B2] font-normal text-[10px] sm:text-xs">(+60 avaliações)</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#4A3728]">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#4A3728]">
             Quem experimenta, apaixona-se.
           </h2>
-          <p className="text-[#6B5E55] text-base leading-relaxed">
+          <p className="text-[#6B5E55] text-xs sm:text-sm sm:text-base leading-relaxed">
             Nossa missão é acolher cada cliente com sorrisos, sabor inesquecível e preços que cabem no bolso. Veja a opinião de quem vive a experiência Divino Sabor.
           </p>
         </motion.div>
 
         {/* 3 Review Cards Grid */}
-        <div className="mt-12 grid md:grid-cols-3 gap-8">
+        <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
           {REVIEWS_DATA.map((review, index) => (
             <motion.div
               key={review.id}
@@ -46,47 +46,47 @@ export const SocialProofSection: React.FC = () => {
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: index * 0.15, ease: [0.25, 1, 0.5, 1] }}
               whileHover={{ y: -5 }}
-              className="relative bg-[#FAF7F2] rounded-2xl p-6 sm:p-7 border border-[#D9C5B2] hover:border-[#8C5E44] shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
+              className="relative bg-[#FAF7F2] rounded-2xl p-5 sm:p-7 border border-[#D9C5B2] hover:border-[#8C5E44] shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
             >
               {/* Quote Icon Background */}
-              <Quote className="absolute top-4 right-4 w-10 h-10 text-[#8C5E44]/10 group-hover:text-[#8C5E44]/20 transition-colors pointer-events-none" />
+              <Quote className="absolute top-4 right-4 w-8 h-8 sm:w-10 sm:h-10 text-[#8C5E44]/10 group-hover:text-[#8C5E44]/20 transition-colors pointer-events-none" />
 
               <div>
                 {/* Rating Stars */}
                 <div className="flex items-center gap-1 text-[#8C5E44] mb-3">
                   {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#8C5E44]" />
+                    <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#8C5E44]" />
                   ))}
-                  <span className="ml-2 text-xs font-bold text-[#4A3728] bg-[#F0E6D8] px-2 py-0.5 rounded-md border border-[#D9C5B2]">
+                  <span className="ml-2 text-[11px] sm:text-xs font-bold text-[#4A3728] bg-[#F0E6D8] px-2 py-0.5 rounded-md border border-[#D9C5B2]">
                     5.0
                   </span>
                 </div>
 
                 {/* Highlight Title */}
-                <h3 className="font-serif font-bold text-[#4A3728] text-base mb-2 group-hover:text-[#8C5E44] transition-colors">
+                <h3 className="font-serif font-bold text-[#4A3728] text-sm sm:text-base mb-2 group-hover:text-[#8C5E44] transition-colors">
                   "{review.highlight}"
                 </h3>
 
                 {/* Comment Body */}
-                <p className="text-[#6B5E55] text-sm leading-relaxed italic mb-6">
+                <p className="text-[#6B5E55] text-xs sm:text-sm leading-relaxed italic mb-5 sm:mb-6">
                   {review.comment}
                 </p>
               </div>
 
               {/* Author Footer */}
-              <div className="pt-4 border-t border-[#D9C5B2] flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#8C5E44] text-[#FAF7F2] font-serif font-bold text-xs flex items-center justify-center border border-[#8C5E44]/30 shadow-xs shrink-0">
+              <div className="pt-3.5 sm:pt-4 border-t border-[#D9C5B2] flex items-center justify-between">
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#8C5E44] text-[#FAF7F2] font-serif font-bold text-xs flex items-center justify-center border border-[#8C5E44]/30 shadow-xs shrink-0">
                     {review.initials || review.name.charAt(0)}
                   </div>
                   <div>
                     <h4 className="font-bold text-xs text-[#4A3728]">{review.name}</h4>
-                    <p className="text-[11px] text-[#8C5E44] font-medium">{review.role}</p>
+                    <p className="text-[10px] sm:text-[11px] text-[#8C5E44] font-medium">{review.role}</p>
                   </div>
                 </div>
 
-                <span className="text-[10px] text-[#6B5E55] bg-[#F0E6D8] px-2 py-1 rounded-md border border-[#D9C5B2] font-medium">
-                  Google Verified
+                <span className="text-[9px] sm:text-[10px] text-[#6B5E55] bg-[#F0E6D8] px-2 py-1 rounded-md border border-[#D9C5B2] font-medium">
+                  Google
                 </span>
               </div>
 
@@ -100,7 +100,7 @@ export const SocialProofSection: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-12 text-center"
+          className="mt-8 sm:mt-12 text-center"
         >
           <motion.a
             whileHover={{ scale: 1.02 }}
@@ -108,7 +108,7 @@ export const SocialProofSection: React.FC = () => {
             href={CLIENT_DATA.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#4A3728] hover:text-[#8C5E44] bg-[#F0E6D8] hover:bg-[#FAF7F2] px-5 py-3 rounded-xl border border-[#D9C5B2] shadow-xs transition-all cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-[#4A3728] hover:text-[#8C5E44] bg-[#F0E6D8] hover:bg-[#FAF7F2] px-5 py-3 rounded-xl border border-[#D9C5B2] shadow-xs transition-all cursor-pointer"
           >
             <span>Ver todas as avaliações no Google Maps (5.0 Estrelas)</span>
             <ExternalLink className="w-4 h-4 text-[#8C5E44]" />

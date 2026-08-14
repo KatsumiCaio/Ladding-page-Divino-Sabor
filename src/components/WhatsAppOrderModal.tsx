@@ -76,18 +76,18 @@ export const WhatsAppOrderModal: React.FC<WhatsAppOrderModalProps> = ({ isOpen, 
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-            className="relative z-10 bg-[#FAF7F2] w-full max-w-lg rounded-3xl border-2 border-[#25D366] shadow-2xl overflow-hidden flex flex-col"
+            className="relative z-10 bg-[#FAF7F2] w-full max-w-lg max-h-[90vh] rounded-3xl border-2 border-[#25D366] shadow-2xl overflow-hidden flex flex-col"
           >
             
             {/* Header */}
-            <div className="bg-[#8C5E44] text-white p-6 flex items-center justify-between">
+            <div className="bg-[#8C5E44] text-white p-4 sm:p-6 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-[#25D366] text-white flex items-center justify-center shadow-xs">
-                  <MessageCircle className="w-6 h-6" />
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[#25D366] text-white flex items-center justify-center shadow-xs shrink-0">
+                  <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-lg">Atendimento Divino Sabor</h3>
-                  <p className="text-xs text-white/80">WhatsApp Direct: {CLIENT_DATA.whatsapp}</p>
+                  <h3 className="font-serif font-bold text-base sm:text-lg leading-tight">Atendimento Divino Sabor</h3>
+                  <p className="text-[11px] sm:text-xs text-white/80">WhatsApp: {CLIENT_DATA.whatsapp}</p>
                 </div>
               </div>
 
@@ -95,14 +95,15 @@ export const WhatsAppOrderModal: React.FC<WhatsAppOrderModalProps> = ({ isOpen, 
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={onClose}
-                className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer"
+                className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
+                aria-label="Fechar modal"
               >
                 <X className="w-5 h-5" />
               </motion.button>
             </div>
 
             {/* Content */}
-            <div className="p-6 space-y-5 bg-white">
+            <div className="p-4 sm:p-6 space-y-4 sm:space-y-5 bg-white overflow-y-auto">
               
               {selectedItem ? (
                 <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#D9C5B2] flex items-center gap-4">

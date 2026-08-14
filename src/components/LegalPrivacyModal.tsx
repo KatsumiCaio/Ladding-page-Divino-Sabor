@@ -44,16 +44,16 @@ export const LegalPrivacyModal: React.FC<LegalPrivacyModalProps> = ({
             className="relative z-10 bg-[#FAF7F2] w-full max-w-3xl max-h-[85vh] rounded-3xl border-2 border-[#8C5E44] shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-[#4A3728] text-white p-5 flex items-center justify-between border-b border-[#5C4635]">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-[#8C5E44] text-white flex items-center justify-center font-bold">
+            <div className="bg-[#4A3728] text-white p-4 sm:p-5 flex items-center justify-between border-b border-[#5C4635] shrink-0">
+              <div className="flex items-center gap-2.5 sm:gap-3">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[#8C5E44] text-white flex items-center justify-center font-bold shrink-0">
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-lg text-white">
-                    Conformidade, Termos & Privacidade LGPD
+                  <h3 className="font-serif font-bold text-sm sm:text-lg text-white leading-tight">
+                    Termos & Privacidade LGPD
                   </h3>
-                  <p className="text-xs text-[#F0E6D8]">
+                  <p className="text-[11px] sm:text-xs text-[#F0E6D8]">
                     Divino Sabor - Capão Bonito / SP
                   </p>
                 </div>
@@ -61,41 +61,42 @@ export const LegalPrivacyModal: React.FC<LegalPrivacyModalProps> = ({
 
               <button
                 onClick={onClose}
-                className="p-2 rounded-xl bg-[#5C4635] hover:bg-[#8C5E44] text-white transition-all cursor-pointer"
+                className="p-2 rounded-xl bg-[#5C4635] hover:bg-[#8C5E44] text-white transition-all cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
+                aria-label="Fechar"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Nav Tabs */}
-            <div className="bg-white border-b border-[#D9C5B2] px-6 py-2.5 flex items-center gap-2">
+            <div className="bg-white border-b border-[#D9C5B2] px-3 sm:px-6 py-2 sm:py-2.5 flex items-center gap-2 overflow-x-auto shrink-0">
               <button
                 onClick={() => setActiveTab('privacy')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
+                className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap ${
                   activeTab === 'privacy'
                     ? 'bg-[#4A3728] text-white'
                     : 'bg-[#FAF7F2] text-[#6B5E55] hover:text-[#4A3728]'
                 }`}
               >
-                <ShieldCheck className="w-4 h-4 text-[#25D366]" />
-                <span>Política de Privacidade (LGPD)</span>
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#25D366]" />
+                <span>Privacidade (LGPD)</span>
               </button>
 
               <button
                 onClick={() => setActiveTab('terms')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
+                className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap ${
                   activeTab === 'terms'
                     ? 'bg-[#4A3728] text-white'
                     : 'bg-[#FAF7F2] text-[#6B5E55] hover:text-[#4A3728]'
                 }`}
               >
-                <FileText className="w-4 h-4 text-[#8C5E44]" />
-                <span>Termos de Uso do Serviço</span>
+                <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#8C5E44]" />
+                <span>Termos de Uso</span>
               </button>
             </div>
 
             {/* Content Body */}
-            <div className="p-6 overflow-y-auto flex-1 space-y-4 text-xs text-[#4A3728] leading-relaxed bg-white">
+            <div className="p-4 sm:p-6 overflow-y-auto flex-1 space-y-3 sm:space-y-4 text-xs text-[#4A3728] leading-relaxed bg-white">
               {activeTab === 'privacy' ? (
                 <div className="space-y-4">
                   <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#D9C5B2] space-y-2">
